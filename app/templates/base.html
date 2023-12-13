@@ -1,0 +1,17 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - corrector</title>
+        {% else %}
+        <title>Corrector</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+			Навигация:
+			<a href="{{ url_for('index') }}">Главная</a>
+		</div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
