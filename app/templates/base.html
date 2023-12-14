@@ -13,5 +13,16 @@
 		</div>
         <hr>
         {% block content %}{% endblock %}
+		{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+		<hr>
+		<h4>Made by: Katya, Vlad, Maksim.</h4>
     </body>
 </html>
