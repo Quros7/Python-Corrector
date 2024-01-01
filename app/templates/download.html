@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block form %}
+	<h2>Скачай готовый файл:</h2>
+	<form action="{{url_for('download_file', coded_name=coded_name, name=name)}}">
+		<input type="submit" value="Скачать" />
+	</form>
+{% endblock %}

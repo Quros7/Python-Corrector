@@ -12,7 +12,8 @@
 			<a href="{{ url_for('index') }}">Главная</a>
 		</div>
         <hr>
-        {% block content %}{% endblock %}
+		<h1>Привет!</h1>
+		<h2>Это корректор вашего потенциального диплома или курсовой.</h2>
 		{% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
@@ -22,6 +23,7 @@
         </ul>
         {% endif %}
         {% endwith %}
+        {% block form %}{% endblock %}
 		<hr>
 		<h4>Made by: Vlad, Katya, Maksim.</h4>
     </body>
