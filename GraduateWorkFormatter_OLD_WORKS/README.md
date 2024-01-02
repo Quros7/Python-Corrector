@@ -1,6 +1,6 @@
-# Graduate_Work_Formatter
+# GraduateWorkFormatter
 
-Скрипт, позволяющий выявить и исправить ошибки форматирования в дипломных работах в соответствии с положением: [https://urfu.ru/fileadmin/user_upload/common_files/education/methodological_council/docs/20220603_EHOR_OFORMLENIE_VKR._Trebovanija_standarta_01.06.2022.pdf]
+Скрипт, позволяющий выявить и исправить ошибки форматирования в дипломных работах в соответствии с положением: https://insma.urfu.ru/images/institut/ums/normy_work_IENIM_2021.pdf
 
 ## Использование
 

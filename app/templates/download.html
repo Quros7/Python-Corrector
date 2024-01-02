@@ -6,3 +6,12 @@
 		<input type="submit" value="Скачать" />
 	</form>
 {% endblock %}
+
+{% block changes %}
+	<h2>Что изменилось в файле:</h2>
+	<ul>
+	   {% for line in log_lines %}
+		  <li><p>{{ line }}</p></li>
+	   {% endfor %}
+	</ul>
+{% endblock %}

@@ -19,24 +19,17 @@ def Edit(inp_path, inp_filename):
     try:
         doc = Document(args)
     except ValueError:
-        print('Документ должен быть одного из типов: txt, doc, docx, docm')
+        print('Документ должен быть типа docx')
         exit(1)
 
-    changes =[]
-    main_req_formatter.MainRequirementsFormatter.format_document(doc, changes)
-    main_req_formatter.MainRequirementsFormatter.change_title_page_year(doc, '2023', changes)
-    source_links_formatter.SourceLinksFormatter.check_for_links_presence(doc, changes)
+    main_req_formatter.MainRequirementsFormatter.format_document(doc)
+    main_req_formatter.MainRequirementsFormatter.change_title_page_year(doc, '2023')
+    source_links_formatter.SourceLinksFormatter.check_for_links_presence(doc)
     
     n_name = "edited_" + inp_filename
     n_path = os.path.join(app.config['UPLOAD_FOLDER'], n_name)
     doc.save(n_path)
-    
-    log_path = os.path.join(app.config['UPLOAD_FOLDER'], "changelog_" + n_name + ".txt")
-    changes_file = open(log_path, "w+")
-    for item in changes:
-        changes_file.write("%s\n" % item)
-    changes_file.close()
 
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()

@@ -26,7 +26,8 @@ def allowed_file(filename):
 def upload_file():
     file = request.files['file']
     if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
+        if len(file.filename) > len(secure_filename(file.filename)): filename = file.filename
+        else: filename = secure_filename(file.filename)
         timetemp = str(time.time()).split(".")
         coded_filename = timetemp[0]+timetemp[1]+"$"+filename
         # Here we save the file with coded name
@@ -37,7 +38,13 @@ def upload_file():
         formatter.Edit(file_path, coded_filename);
         flash('Файл ({}) был успешно отредактирован'.format(filename))
         ed_filename = "edited_" + filename
-        return render_template('download.html', coded_name="edited_"+coded_filename, name=ed_filename, title='Download')
+        coded_name="edited_"+coded_filename
+        # массив-содержимое файла changelog
+        log_lines = []
+        log_path = os.path.join(app.config['UPLOAD_FOLDER'], "changelog_"+coded_name+".txt")
+        with open(log_path) as logfile:
+            log_lines = [row for row in reversed(list(logfile))]
+        return render_template('download.html', coded_name=coded_name, name=ed_filename, log_lines=log_lines, title='Download')
     
     flash('Ошибка при загрузке файла ({})'.format(filename))
     return redirect(url_for('index'))
