@@ -40,4 +40,4 @@ class SourceLinksFormatter:
         ref_subscripts_number = SourceLinksFormatter.get_number_of_ref_subscripts(doc)
         source_links_number = SourceLinksFormatter.get_number_of_source_links(doc, 'список источников и литературы')
         if ref_subscripts_number != source_links_number:
-            changes.append("warning: the number of highlighted references does not correspond to the number of literature sources, perhaps your list of sources is not a complete list!")
+            changes.append("предупреждение: количество выделенных ссылок не соответствует количеству источников литературы, возможно, ваш список источников не является полным!")
