@@ -7,9 +7,6 @@ from GraduateWorkFormatter import source_links_formatter
 import argparse
 
 def Edit(inp_path, inp_filename):
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('path_to_docx', type=str, help='Path to docx file')
-    # args = parser.parse_args()
     args = inp_path
 
     if not os.path.exists(args) or not os.path.isfile(args):
