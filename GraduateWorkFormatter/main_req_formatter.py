@@ -116,24 +116,24 @@ class MainRequirementsFormatter:
         for p in doc.paragraphs:
             for r in p.runs:
                 if regex.search(r.text):
-                    changes.append("year changed")
+                    changes.append("Год написания работы")
                     r.text = f'\n{year}'
                     return
 
     @staticmethod
     def external_changes(colour, indentation, font, size, spacing, margins, loc_changes):
         if colour != 0:
-            loc_changes.append("color changed")
+            loc_changes.append("Цвет шрифта")
         if indentation != 0:
-            loc_changes.append("indentation changed")
+            loc_changes.append("Абзацные отступы")
         if font != 0:
-            loc_changes.append("font name changed")
+            loc_changes.append("Шрифт")
         if size != 0:
-            loc_changes.append("font size changed")
+            loc_changes.append("Размер шрифта")
         if spacing != 0:
-            loc_changes.append("line spacing changed")
+            loc_changes.append("Междустрочный интервал")
         if margins != 0:
-            loc_changes.append("margins changed")
+            loc_changes.append("Отступы полей")
 
 
     @staticmethod
