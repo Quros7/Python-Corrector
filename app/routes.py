@@ -34,13 +34,13 @@ def upload_file():
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], coded_filename)
             file.save(file_path)
             flash('Файл ({}) был успешно загружен на сервер'.format(filename))
-            formatter.Edit(file_path, coded_filename);
+            formatter.Edit(file_path, coded_filename)
             flash('Файл ({}) был успешно отредактирован'.format(filename))
             ed_filename = "edited_" + filename
-            coded_name="edited_"+coded_filename
+            coded_name = "edited_" + coded_filename
             # массив-содержимое файла changelog
             log_lines = []
-            log_path = os.path.join(app.config['UPLOAD_FOLDER'], "changelog_"+coded_name+".txt")
+            log_path = os.path.join(app.config['UPLOAD_FOLDER'], "changelog_" + coded_name + ".txt")
             with open(log_path) as logfile:
                 log_lines = [row for row in reversed(list(logfile))]
             return render_template('download.html', coded_name=coded_name, name=ed_filename, log_lines=log_lines, title='Download')
