@@ -24,17 +24,3 @@ class CitationFormatter:
             formatted_reference += "."
 
         return formatted_reference.strip()
-
-
-    def format_reference(f_timestamp):
-        # Read the references from a file
-        ref_name = "referenses_" + str(f_timestamp) + ".txt"
-        with open(ref_name, "r", encoding="utf-8") as f:
-            references = f.readlines()
-
-        form_ref_name = "formatted_references_" + f_timestamp + ".txt"
-        # Format each reference and write it to the output file
-        with open(form_ref_name, "w", encoding="utf-8") as f:
-            for reference in references:
-                formatted_reference = format_helper(reference)
-                f.write(formatted_reference + "\n")

@@ -112,6 +112,8 @@ class MainRequirementsFormatter:
     @staticmethod
     def change_title_page_year(doc: Document, year: str, changes):
         regex = re.compile(r"20[0-9][0-9]")
+        
+        break_flag = False
 
         for p in doc.paragraphs:
             for r in p.runs:
@@ -119,6 +121,14 @@ class MainRequirementsFormatter:
                     changes.append("Год написания работы")
                     r.text = f'\n{year}'
                     return
+                if 'lastRenderedPageBreak' in r._element.xml:  
+                    break_flag = True
+                    break
+                if 'w:br' in r._element.xml and 'type="page"' in r._element.xml:
+                    break_flag = True
+                    break
+            if break_flag:
+                break
 
     @staticmethod
     def external_changes(colour, indentation, font, size, spacing, margins, loc_changes):

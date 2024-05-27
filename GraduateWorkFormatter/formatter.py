@@ -21,10 +21,10 @@ def Edit(inp_path, inp_filename):
         exit(1)
 
     changes =[]
-    main_req_formatter.MainRequirementsFormatter.format_document(doc, changes)
-    #source_links_formatter.SourceLinksFormatter.extract_bibliography(doc)
-    main_req_formatter.MainRequirementsFormatter.change_title_page_year(doc, '2023', changes)
+    
+    main_req_formatter.MainRequirementsFormatter.change_title_page_year(doc, '2024', changes)
     source_links_formatter.SourceLinksFormatter.check_for_links_presence(doc, changes)
+    main_req_formatter.MainRequirementsFormatter.format_document(doc, changes)
     
     n_name = "edited_" + inp_filename
     n_path = os.path.join(app.config['UPLOAD_FOLDER'], n_name)
@@ -35,7 +35,3 @@ def Edit(inp_path, inp_filename):
     for item in changes:
         changes_file.write("%s\n" % item)
     changes_file.close()
-
-
-# if __name__ == '__main__':
-#     main()

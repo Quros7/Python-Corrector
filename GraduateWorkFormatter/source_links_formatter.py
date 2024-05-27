@@ -52,9 +52,6 @@ class SourceLinksFormatter:
                 bibliography_found = True
         for i, paragraph in enumerate(doc.paragraphs):
             if paragraph.text in bibliography_text:
-                #берём paragraph.text, передаём в скрипт, возвращаем изменённое
-                #добавить if paragraph.text != изменённое, то изменяем файл(строка ниже doc.par...) и меняем changes на True
-                #в самом конце функции, если changed==True то возвращаем тру и коммент ниже
                 f_link = citation_formatter.CitationFormatter.format_helper(paragraph.text)
                 if paragraph.text != f_link:
                     doc.paragraphs[i].text = f_link
@@ -68,8 +65,5 @@ class SourceLinksFormatter:
         source_links_number = SourceLinksFormatter.get_number_of_source_links(doc, 'Библиографический список:')
         if ref_subscripts_number != source_links_number:
             changes.append("Внимание: количество выделенных ссылок не соответствует количеству литературных источников. Возможно, ваш список источников не является полным!")
-        #тут if (extract_bibliography) то changes.append("отредактированы ссылки в списке библиографии")
-        #если чуть больше заморочиться, то можно и уточнять какая ссылка, но мне кажется и этого достаточно
         if (SourceLinksFormatter.extract_bibliography(doc)):
             changes.append("Отредактированы ссылки в списке библиографии.")
-        
